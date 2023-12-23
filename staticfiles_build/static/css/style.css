@@ -1,0 +1,258 @@
+.navbar .nav-item .nav-link:hover {
+    color: #D7B35B !important;
+}
+
+
+.tarjeta {
+    width: 210px;
+    height: 305px;
+    display: flex;
+    flex-direction: column;
+    background-color: #171717;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 14px;
+    cursor: pointer
+}
+
+.tarjeta:hover {
+    background-color: #262626;
+    transition: 700ms;
+}
+
+.formulario .login,
+.formulario .registro {
+    color: #ffffff;
+}
+
+.formulario .login input,
+.formulario .login textarea {
+    /* estilo para el form de python que no acepta clases de bootstrap */
+    display: block;
+    width: 230px;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.formulario input,
+.formulario textarea {
+    border-radius: 0;
+    box-shadow: none;
+    font-size: 14px;
+    border-radius: 4px;
+}
+
+.formulario input:focus,
+.formulario textarea:focus,
+.formulario select:focus {
+    border-color: #D7B35B;
+    box-shadow: 0 0 5px rgba(215, 180, 91, 0.605);
+    outline: none;
+}
+
+.formulario input {
+    height: 44px;
+}
+
+.formulario textarea {
+    padding: 10px 12px;
+}
+
+.formulario button,
+.formulario a {
+    background: #D7B35B;
+    border: 0;
+    padding: 10px 24px;
+    color: #fff;
+    transition: 0.4s;
+    border-radius: 4px;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+.formulario button[type=submit]:hover,
+.formulario a:hover {
+    background: #f4c653;
+}
+
+/* btn-admin */
+.btn-admin a {
+    background: #D7B35B;
+    border: 0;
+    padding: 3px 12px;
+    color: #ffffff;
+    transition: 0.4s;
+    border-radius: 4px;
+    letter-spacing: 0px;
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+}
+
+.btn-admin a:hover {
+    background: #f4c653;
+}
+
+/* seccion suscripcion */
+
+.subscription-section {
+    background-color: #171717;
+    color: #fff;
+    padding: 30px;
+}
+
+.subscription-section:hover {
+    background-color: #262626;
+    transition: 700ms;
+}
+
+.subscription-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+    position: relative;
+    display: inline-block;
+}
+
+.subscription-title::before,
+.subscription-title::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 40px;
+    height: 2px;
+    background-color: #dfe9f3;
+    width: 150px;
+}
+
+.subscription-title::before {
+    right: calc(100% + 10px);
+}
+
+.subscription-title::after {
+    left: calc(100% + 10px);
+}
+
+@media only screen and (max-width: 767px) {
+    .subscription-title {
+        text-align: center;
+        /* Centra el texto */
+    }
+
+    .subscription-title::before {
+        display: block;
+        /* Muestra la línea arriba del título */
+        right: auto;
+        /* Elimina la posición a la derecha */
+        top: calc(-10px - 2px);
+        /* Mueve la línea arriba del título */
+        left: 50%;
+        transform: translateX(-50%);
+        width: 250px;
+    }
+
+    .subscription-title::after {
+        display: block;
+        /* Muestra la línea debajo del título */
+        left: auto;
+        /* Elimina la posición a la izquierda */
+        top: calc(100% + 10px);
+        /* Mueve la línea debajo del título */
+        right: 50%;
+        transform: translateX(50%);
+        width: 250px;
+    }
+}
+
+/* search */
+
+.search_input {
+    display: block;
+    width: 200px;
+    border-radius: 0.375rem;
+    border: 1px solid #d1d5db;
+    /* Cambia el color si es necesario */
+    background-color: #ffffff;
+    padding-top: 0.625rem;
+    padding-bottom: 0.625rem;
+    font-size: 0.875rem;
+    padding-left: 1.25rem;
+    padding-right: 3rem;
+    /* Ajusta el espaciado a tu preferencia */
+    font-weight: 500;
+    box-shadow: 0 1px 2px rgba(252, 110, 139, 0.36);
+    /* Ajusta la sombra si es necesario */
+    outline: none;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.search_input:focus {
+    border-color: #fc6e8b;
+    box-shadow: none;
+    /* Cambia la sombra al enfocar si prefieres */
+}
+
+
+/*--------------------------------------------------------------
+# Footer
+--------------------------------------------------------------*/
+#footer {
+    background: #090909;
+    color: #fff;
+    font-size: 14px;
+    text-align: center;
+    padding: 24px 0;
+}
+
+#footer h3 {
+    font-size: 36px;
+    font-weight: 700;
+    color: #fff;
+    position: relative;
+    font-family: "Poppins", sans-serif;
+    padding: 0;
+    margin: 0 0 15px 0;
+}
+
+#footer p {
+    font-size: 15;
+    font-style: italic;
+    padding: 0;
+    margin: 0 0 40px 0;
+}
+
+.social-links {
+    margin: 0 0 20px 0;
+}
+
+.social-links a {
+    font-size: 18px;
+    display: inline-block;
+    background: #D7B35B;
+    color: #fff;
+    line-height: 1;
+    padding: 8px 0;
+    border-radius: 50%;
+    text-align: center;
+    width: 36px;
+    height: 36px;
+    transition: 0.3s;
+}
+
+.social-links a:hover {
+    background: #f4c653;
+    color: #fff;
+    text-decoration: none;
+}
+
+#footer .copyright {
+    margin: 0 0 5px 0;
+}
