@@ -9,6 +9,8 @@ Esta Web simula la lógica de una universidad donde se relacionan carreras, comi
 en una carrera, suscribirse a las novedades de la página y navegar por la misma. Un usuario administrador podra crear, editar y eliminar carreras y comisiones,
 tambien podra eliminar alumnos inscriptos.
 
+Aún tengo pendientes algunas cosas pensadas como agregar una paginación, mejorar estilos, fuentes, etc.
+
 ##### Front-End
 - HTML / CSS / JS
 - Bootstrap 5
