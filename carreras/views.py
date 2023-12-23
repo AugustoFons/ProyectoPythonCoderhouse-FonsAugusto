@@ -129,7 +129,7 @@ def eliminar_comision(request, codigo_comision):
     return redirect('/')
 
 ###Eliminar Alumno###
-def eliminar_alumno(request, dni_alumno):
-    alumno= Alumno.objects.get(dni=dni_alumno)
+def eliminar_alumno(request, alumno_id):
+    alumno = Alumno.objects.get(pk=alumno_id)
     alumno.delete()
     return redirect('/')

@@ -20,7 +20,7 @@
                 <td class="d-flex flex-row gap-2 text-center align-items-center">
                     {{ alumno.dni }}
                     {% if request.user.is_staff %}
-                    <a href="{% url 'eliminar_alumno' dni_alumno=alumno.dni %}">
+                    <a href="{% url 'eliminar_alumno' alumno_id=alumno.id %}">
                         <img src="{% static 'img/elim.png' %}" alt="Logo" width="18" style="padding-bottom: 2px;">
                     </a>
                     {% endif %}
