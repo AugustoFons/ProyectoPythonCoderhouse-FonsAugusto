@@ -4,8 +4,8 @@ from django.db import models
 class Carrera(models.Model):
     nombre= models.CharField(max_length=100)
     duracion= models.IntegerField(default=0)
-    descripcion= models.CharField(max_length=500)
-    url_img= models.CharField(max_length=500)
+    descripcion= models.TextField()
+    url_img= models.TextField()
     categoria= models.CharField(max_length=120, default='')
     def __str__(self):
         return self.nombre
