@@ -17,7 +17,7 @@
                     {% csrf_token %}
                     <div class="form-group mt-md-0" style="width: 250px;">
                         <select class="form-control text-center" name="nombre" id="nombre" required style="width: 100%;">
-                            <option value="" disabled selected>-- Filtrar por Categoria --</option>
+                            <option value="" disabled selected>-- Filtrar por Nombre --</option>
                             {% for carrera in carreras %}
                                 <option value="{{ carrera.nombre }}">{{ carrera.nombre }}</option>
                             {% endfor %}
