@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block contenido %}
+{% if request.user.is_staff %}
+
+<section class="formulario bg-dark">
+    <div class="container">
+        <div class="mt-0 py-4 d-flex justify-content-center"> <!-- Agregué la clase 'justify-content-center' aquí -->
+            <form action="{% url 'crear' %}" method="post" role="form">
+                {% csrf_token %}
+                <div class="form-group mt-3 mt-md-0 mb-2">
+                    <label class="mb-1 text-white" for="nombre">Nombre</label>
+                    <input type="text" class="form-control" name="nombre" id="nombre" required>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-6 mt-3">
+                        <label class="mb-1 text-white" for="categoria">Categoria</label>
+                        <input type="text" class="form-control" name="categoria" id="categoria" required>
+                    </div>
+                    <div class="form-group col-md-6 mt-3">
+                        <label class="mb-1 text-white" for="duracion">Duración (en años)</label>
+                        <input type="number" class="form-control" name="duracion" id="duracion" required>
+                    </div>
+                </div>
+                <div class="form-group col-md-12 mt-3">
+                    <label class="mb-1 text-white" for="url_img">Url (imagen)</label>
+                    <input type="url" class="form-control" name="url_img" id="url_img" required>
+                </div>
+                <div class="form-group mt-3">
+                    <label class="mb-1" for="descripcion">Descripción</label>
+                    <textarea class="form-control" name="descripcion" rows="10" required></textarea>
+                </div>
+
+                <div class="text-center d-flex justify-content-center mt-3 btn text-white py-2">
+                    <button type="submit">Crear</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+{% endif %}
+{% endblock %}

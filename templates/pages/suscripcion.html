@@ -1,0 +1,27 @@
+{% block suscripcion %}
+<section id="suscribirse" class="subscription-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 mx-auto text-center">
+                <h2 class="subscription-title">
+                    <span>Suscribite para recibir las últimas novedades</span>
+                </h2>
+                <div class="social-links" style="margin-bottom: 20px;">
+                    <a href="" class=""><i class='bx bx-envelope'></i></a>
+                </div>
+                <form action="{% url 'carreras' %}" method="post" role="form">
+                    {% csrf_token %}
+                    <div class="form-group col-md-12 mt-3 formulario">
+                        <label class="mb-2 text-white" for="email">Email</label>
+                        <input type="email" class="form-control" name="email" id="email" placeholder="ejemplo@gmail.com" required>
+                    </div>
+                    <div class="text-center d-flex justify-content-center mt-3 btn text-white py-2 formulario">
+                        <button type="submit">Suscribirme</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

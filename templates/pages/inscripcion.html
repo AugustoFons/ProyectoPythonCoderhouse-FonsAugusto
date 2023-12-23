@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block contenido %}
+<section class="formulario bg-dark">
+    <div class="container">
+        <div class="mt-0 py-4 d-flex justify-content-center"> <!-- Agregué la clase 'justify-content-center' aquí -->
+            <form action="{% url 'inscribirse' %}" method="post" role="form">
+                {% csrf_token %}
+                <div class="form-group mt-3 mt-md-0 mb-2">
+                    <label class="mb-1" for="carrera_nombre"></label>
+                {% for carrera in carreras %}
+                    {% if carrera.nombre == request.GET.carrera_nombre %}
+                        <input type="hidden" name="carrera_nombre" value="{{ carrera.id }}" class="form-control">
+                        <input type="text" value="{{ carrera.nombre }}" class="form-control" readonly> <!-- este input no se envia, solo es visible -->
+                    {% endif %}
+                {% endfor %}
+                </div>
+                <div class="row">
+                    <div class="form-group my-3 mt-md-0 mb-2">
+                        <label class="mb-1 text-white" for="comision"><sup>*</sup>Solo apareceran comisiones de menos de 20 alumnos</label>
+                        <select class="" name="comision" id="comision" required >
+                            <option value="" disabled selected>-- Seleccione una Comision --</option>
+                            {% for comision in comisiones %}
+                                <option type="text" value="{{ comision.id }}">{{ comision }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="form-group col-md-6 mt-3">
+                        <label class="mb-1 text-white" for="nombre">Nombre</label>
+                        <input type="text" class="form-control" name="nombre" id="nombre" required>
+                    </div>
+                    <div class="form-group col-md-6 mt-3">
+                        <label class="mb-1 text-white" for="dni">DNI</label>
+                        <input type="text" class="form-control" name="dni" id="dni" required>
+                    </div>
+                </div>
+                <div class="form-group col-md-12 mt-3">
+                    <label class="mb-1 text-white" for="email">Email</label>
+                    <input type="email" class="form-control" name="email" id="email" required>
+                </div>
+
+                <div class="text-center d-flex justify-content-center mt-3 btn text-white py-2">
+                    <button type="submit">Inscribirme</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    const choicesBasic = new Choices('#comision', {
+        searchPlaceholderValue: "O ingrese el numero de comision...",
+        position: 'bottom',
+        choices: [
+        ],
+        searchFields: ['label', 'value'],
+    });
+});
+</script>
+{% endblock %}

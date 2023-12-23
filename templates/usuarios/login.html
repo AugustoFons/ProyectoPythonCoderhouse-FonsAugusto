@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block contenido %}
+<section class="bg-dark text-white" style="height: 70vh; padding: 24px 0px;">
+    <div class="container text-white">
+        <div class="container text-center" style="max-width: 1000px;">
+            <h2 class="fw-bold">Ingresa a <span style="color: #D7B35B;">Universidad Coder</span></h2>
+            <p>¿No tenés un Usuario? <a class="fw-bold text-white" href="/usuarios/registro">Registrate</a></p>
+
+        <div class="mt-0 py-2 d-flex flex-column justify-content-center formulario text-white">
+            <form action="" method="POST" class="text-center login"> <!-- Agregar la clase text-center aquí -->
+                {% csrf_token %}
+                <div class="form-group col-md-12 mt-1 d-flex flex-column align-items-center">
+                    <label for="id_username" class="mb-2 text-white">Nombre de usuario</label>
+                    {{ formulario.username }}
+                </div>
+                <div class="form-group col-md-12 mt-3 d-flex flex-column align-items-center">
+                    <label for="id_password" class="mb-2 text-white">Contraseña</label>
+                    {{ formulario.password }}
+                </div>
+                <div class="text-center mt-3 btn text-white py-2">
+                    <button type="submit">Ingresar</button>
+                    {% if mensaje %}
+                    <p class="py-2"> <sup>*</sup>{{ mensaje }}</p>
+                    {% endif %}
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}

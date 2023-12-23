@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block contenido %}
+
+    <section class="bg-dark text-white pt-4 pb-2">
+        <div class="container text-center" style="max-width: 1000px;">
+            <h1 class="fw-bold">Anotate a la <span style="color: #D7B35B;">carrera de tus sueños:</span> ¡Empeza ya mismo tu camino profesional!</h1>
+            <p>Da el primer paso hacia tu futuro: asegura tu lugar en el trayecto educativo que más te guste</p>
+        </div>        
+    </section>
+    
+    <section class="py-md-4 py-2 bg-dark">
+        <div class="d-flex justify-content-center formulario mb-4">
+            <div style="max-width: 500px;">
+                <form action="/" method="POST" style="display: flex; align-items: center; justify-content: center;">
+                    {% csrf_token %}
+                    <div class="form-group mt-md-0" style="width: 250px;">
+                        <select class="form-control text-center" name="nombre" id="nombre" required style="width: 100%;">
+                            <option value="" disabled selected>-- Filtrar por Categoria --</option>
+                            {% for carrera in carreras %}
+                                <option value="{{ carrera.nombre }}">{{ carrera.nombre }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="text-center d-flex justify-content-center btn text-white">
+                        <button type="submit">Filtrar</button>
+                    </div>
+                </form>                
+            </div>
+        </div>
+        
+        <!-- sección de tarjetas -->
+        <div id="carreras" class="d-flex justify-content-center flex-wrap" >
+            {% if lista %}
+                {% for carrera in lista %}
+                <figure class="tarjeta mx-4">
+                    <a href="{% url 'info_carrera' carrera_id=carrera.id %}" class="text-decoration-none">
+                        <div style="max-height: 65%; width: 100%; border: black solid 2px;">
+                            <img style="width: 100%; max-height: 100%; border-radius: 5px; box-shadow: 0px 5px 8px 9px #101010;" src="{{carrera.url_img}}" alt="" />
+                        </div>
+                        <figcaption style="display: flex; flex-direction: column;">
+                            <h5 style="color: white; margin: 12px 0px;" class="text-center">{{carrera.nombre}}</h5>
+                            {% if carrera.descripcion|length > 100 %}
+                            <p style="color: white; font-size: 14px; hyphens: auto">{{ carrera.descripcion|slice:":109" }}...</p>
+                            {% else %}
+                                <p style="color: white; font-size: 14px; hyphens: auto">{{ carrera.descripcion }}</p>
+                            {% endif %}
+                        </figcaption>
+                    </a>
+                </figure>                        
+                {% endfor %}
+            {% else %}
+                {% for carrera in carreras %}
+                    <figure class="tarjeta mx-4">
+                        <a href="{% url 'info_carrera' carrera_id=carrera.id %}" class="text-decoration-none">
+                            <div style="max-height: 65%; width: 100%; border: black solid 2px;">
+                                <img style="width: 100%; max-height: 100%; border-radius: 5px; box-shadow: 0px 5px 8px 9px #101010;" src="{{carrera.url_img}}" alt="" />
+                            </div>
+                            <figcaption style="display: flex; flex-direction: column;">
+                                <h5 style="color: white; margin: 12px 0px;" class="text-center">{{carrera.nombre}}</h5>
+                                {% if carrera.descripcion|length > 100 %}
+                                <p style="color: white; font-size: 14px; hyphens: auto">{{ carrera.descripcion|slice:":109" }}...</p>
+                                {% else %}
+                                    <p style="color: white; font-size: 14px; hyphens: auto">{{ carrera.descripcion }}</p>
+                                {% endif %}
+                            </figcaption>
+                        </a>
+                    </figure>                        
+                {% endfor %}
+            {% endif %}
+        </div>
+    </section>
+
+    <!-- sección de suscripcion -->
+    {% block suscripcion %}
+        {% include "pages/suscripcion.html" %}
+    {% endblock %}
+
+    <section id="proyecto" class="bg-dark text-white py-4">
+        <div class="container" style="max-width: 1000px;">
+            <div class="row">
+                <div class="col-lg-8 col-md-12">
+                    <h1 class="fw-bold mb-3">Sobre el <span style="color: #D7B35B;">Proyecto:</span></h1>
+                    <p>¡Hola! Soy Augusto Fons y esta es la página que creé para el Proyecto Final del curso Python Flex de 
+                        Coderhouse. Está realizada con el Framework Django, y los templates del front están diseñados con HTML,
+                        CSS y Bootstrap. Para el backend, utilicé DBSQLite y PostgreSQL en producción.
+                        <br>
+                        Los usuarios comunes pueden navegar por cada carrera y registrarse en la comisión que elijan. Después 
+                        de registrarse, su nombre y DNI aparecerán en la lista de comisiones. Además, en la vista inicial, 
+                        encontrarán la opción de suscribirse a la página.
+                    </p>
+                </div>
+                <div class="col-lg-4 col-md-12 d-flex justify-content-center align-items-center">
+                    <div class="text-center">
+                        <img src="{% static 'img/mifoto.png' %}" alt="Foto perfil" class="img-fluid rounded-circle mb-1" style="max-width: 250px; height: auto;">
+                        <p class="text-center">Augusto Fons, Desarrollador Web Full Stack.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    const choicesBasic = new Choices('#nombre', {
+        searchPlaceholderValue: "O ingresa la categoria...",
+        position: 'bottom',
+        choices: [
+        ],
+        searchFields: ['label', 'value'],
+    });
+});
+</script>
+{% endblock %}

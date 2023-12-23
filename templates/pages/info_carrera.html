@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block contenido %}
+    <!-- Detalles de la carrera -->
+    <section class="bg-dark">
+        <div class="container-fluid px-0">
+            <div class="row justify-content-center">
+                <div class="card bg-dark text-white col-lg-12">
+                    <div class="card-header w-100">
+                        <h2 class="text-center">{{ carrera_info.nombre }}</h2>
+                    </div>
+                    <div class="card-body text-center">
+                        <img class="img-fluid mb-4 mx-auto d-block" src="{{ carrera_info.url_img }}" alt="{{ carrera_info.nombre }}" />
+
+                        <div class="row justify-content-center">
+                            <div class="col-md-8">
+                                <p class="card-text text-start" style="hyphens: auto;">{{ carrera_info.descripcion }}</p>
+                                <p class="card-text text-start" style="hyphens: auto;">Categoria: {{ carrera_info.categoria }}</p>
+                                <p class="card-text text-start" style="hyphens: auto;">Duración: {{ carrera_info.duracion }} Años</p>
+                            </div>
+                        </div>
+                        
+                        <div class="row justify-content-center py-4">
+                            {% for comision in comisiones %}
+                            <div class="col-lg-4 col-md-6 mb-4">
+                                <div class="card bg-dark text-white position-relative card-body rounded" style="box-shadow: 0px 1px 2px 3px rgba(215, 179, 91, 0.2)">
+                                    <h5 class="card-title text-center">Comisión {{ comision.codigo }}</h5>
+                                    <p class="card-text">Comienza: {{ comision.fecha }}</p>
+                                    <p class="card-text">Horario: {{ comision.horario }}</p>
+                                    <div class="d-flex justify-content-center formulario">
+                                        <a href="{% url 'ver_comision' %}?codigo_comision={{ comision.codigo }}" class="btn text-white py-2">
+                                            Detalles
+                                        </a>
+                                    </div>
+                                    {% if request.user.is_staff %}
+                                    <div class="text-center d-flex justify-content-center gap-4 btn btn-admin text-white py-4">
+                                        <a href="{% url 'editar_comision' codigo_comision=comision.codigo %}" type="button">Editar Comisión</a>
+                                        <a href="{% url 'eliminar_comision' codigo_comision=comision.codigo %}" type="button">Eliminar Comisión</a>
+                                    </div>
+                                    {% endif %}          
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="card-footer d-flex justify-content-center formulario py-3 w-100">
+                        <a href="{% url 'inscribirse' %}?carrera_nombre={{ carrera_info.nombre }}" class="btn text-white py-2">
+                            Inscribirme
+                        </a>
+                    </div>  
+                    {% if not request.user.is_authenticated %}
+                    <div class="card-footer d-flex justify-content-center formulario w-100">
+                        <p><sup>*</sup>Recuerde primero iniciar sesion.</p>
+                    </div>
+                    {% endif %}
+                    {% if request.user.is_staff %}
+                    <div class="text-center d-flex justify-content-center gap-4 btn btn-admin text-white py-4" style="background-color: black">
+                        <a href="{% url 'editar' nombre_carrera=carrera_info.nombre %}" type="button">Editar Carrera</a>
+                        <a href="{% url 'eliminar' nombre_carrera=carrera_info.nombre %}" type="button">Eliminar Carrera</a>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </section>
+    
+{% endblock %}
+
+

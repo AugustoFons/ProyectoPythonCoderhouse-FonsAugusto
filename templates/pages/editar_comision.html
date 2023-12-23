@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block contenido %}
+<section class="formulario bg-dark">
+    <div class="container">
+        <div class="mt-0 py-4 d-flex justify-content-center">
+            <form action="" method="post" role="form">
+                {% csrf_token %}
+                <div class="form-group mt-3 mt-md-0 mb-2">
+                    <label class="mb-1" for="carrera"></label>
+                    <select class="" name="carrera" id="carrera" required >
+                        <option value="" disabled selected>-- Seleccione una Carrera --</option>
+                        {% for carrera in carreras %}
+                            <option type="text" value="{{ carrera.id }}">{{ carrera.nombre }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label class="mb-1 text-white" for="nro">Codigo</label>
+                        <input type="text" name="codigo" class="form-control" id="codigo" required>
+                    </div>
+                    <div class="form-group col-md-6 mt-3 mt-md-0">
+                        <label class="mb-1 text-white" for="prod">Horario</label>
+                        <input type="text" class="form-control" name="horario" id="horario" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-6 mt-3 mt-md-0">
+                        <label class="mb-1 text-white" for="cant">Fecha</label>
+                        <input type="text" class="form-control" name="fecha" id="fecha" required>
+                    </div>
+                </div>
+
+                <div class="text-center d-flex justify-content-center mt-3 btn text-white py-2">
+                    <button type="submit">Editar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+<!-- uso la libreria choice.js para buscar en el select -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    const choicesBasic = new Choices('#carrera', {
+        searchPlaceholderValue: "Sino Ingrese Nombre de carrera...",
+        position: 'bottom',
+        choices: [
+        ],
+        searchFields: ['label', 'value'],
+    });
+});
+</script>
+
+{% endblock %}

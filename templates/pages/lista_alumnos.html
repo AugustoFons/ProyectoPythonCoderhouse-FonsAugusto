@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block contenido %}
+
+<div class="container-fluid bg-dark py-3" style="height: 100vh;">
+
+    <h2 class="text-white">Comision {{ codigo_comision }}</h2>
+    <table class="table table-dark">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>DNI</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for alumno in alumnos %}
+            <tr>
+                <td>{{ alumno.nombre }}</td>
+                <td class="d-flex flex-row gap-2 text-center align-items-center">
+                    {{ alumno.dni }}
+                    {% if request.user.is_staff %}
+                    <a href="{% url 'eliminar_alumno' dni_alumno=alumno.dni %}">
+                        <img src="{% static 'img/elim.png' %}" alt="Logo" width="18" style="padding-bottom: 2px;">
+                    </a>
+                    {% endif %}
+                    
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <p class="text-center text-white">Cantidad de Alumnos: {{ cantidad_alumnos }}</p>
+</div>
+
+{% endblock %}
