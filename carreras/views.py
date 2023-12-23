@@ -73,8 +73,8 @@ def crear_carrera(request):
 
     return render(request, 'pages/crear_carrera.html')
 
-def editar_carrera(request, nombre_carrera):
-    carrera= Carrera.objects.get(nombre=nombre_carrera)
+def editar_carrera(request, carrera_id):
+    carrera= Carrera.objects.get(pk=carrera_id)
 
     if request.method == 'POST':
         carrera.nombre= request.POST["nombre"]
@@ -88,8 +88,8 @@ def editar_carrera(request, nombre_carrera):
     
     return render(request, 'pages/editar_carrera.html', {'carrera': carrera})
 
-def eliminar_carrera(request, nombre_carrera):
-    carrera= Carrera.objects.get(nombre=nombre_carrera)
+def eliminar_carrera(request, carrera_id):
+    carrera= Carrera.objects.get(pk=carrera_id)
     carrera.delete()
     return redirect('/')
 

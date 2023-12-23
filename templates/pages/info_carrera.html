@@ -55,8 +55,8 @@
                     {% endif %}
                     {% if request.user.is_staff %}
                     <div class="text-center d-flex justify-content-center gap-4 btn btn-admin text-white py-4" style="background-color: black">
-                        <a href="{% url 'editar' nombre_carrera=carrera_info.nombre %}" type="button">Editar Carrera</a>
-                        <a href="{% url 'eliminar' nombre_carrera=carrera_info.nombre %}" type="button">Eliminar Carrera</a>
+                        <a href="{% url 'editar' carrera_id=carrera_info.id %}" type="button">Editar Carrera</a>
+                        <a href="{% url 'eliminar' carrera_id=carrera_info.id %}" type="button">Eliminar Carrera</a>
                     </div>
                     {% endif %}
                 </div>
