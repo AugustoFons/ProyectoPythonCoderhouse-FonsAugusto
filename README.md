@@ -20,7 +20,7 @@ Aún tengo pendientes algunas cosas pensadas como agregar una paginación, mejor
 - DBSqlite localmente
 - PostgresQL en produccion
 
-Para usar PostgresQL en producción use la libreria Supabase. En el archivo settings del proyecto esta el codicional para que en el caso de que la variable
+Para usar PostgresQL en producción use la libreria Supabase. En el archivo settings del proyecto esta el condicional para que en el caso de que la variable
 de entorno DJANGO_ENV tenga el valor de 'production' se ejecute una base de datos de postgres. En ese caso se tendran que configurar las demás variables
 de entorno que estan en .env.example con los valores de la libreria Supabase. De todos modos, para ejecutar localmente con DBSqlite hay que tener el archivo .env
 con la variable DJANGO_ENV con un valor diferente a 'production'.
