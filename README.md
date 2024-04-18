@@ -26,7 +26,7 @@ de entorno que estan en .env.example con los valores de la libreria Supabase. De
 con la variable DJANGO_ENV con un valor diferente a 'production'.
 El deploy esta echo en Vercel.
 
-## Video Explicación: https://drive.google.com/file/d/10rDlQZPyLIYMKcCiSDkhYAyEwvVta2YE/view?usp=drive_link
+## Video Explicación: https://drive.google.com/file/d/1B8YdQeM_VzQ9wOcKjrYhUrHX3IvNJ0Hw/view?usp=sharing
 
 ## Deploy: https://proyecto-python-coderhouse-fons-augusto.vercel.app/
 
